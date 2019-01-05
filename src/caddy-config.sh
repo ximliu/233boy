@@ -8,7 +8,7 @@ $domain {
     gzip
 	timeouts none
     proxy / $proxy_site {
-        without /${path}
+        except /${path}
     }
     proxy /${path} 127.0.0.1:${v2ray_port} {
         without /${path}
@@ -38,7 +38,7 @@ $domain {
     gzip
 	timeouts none
     proxy / $proxy_site {
-        without /${path}
+        except /${path}
     }
     proxy /${path} https://127.0.0.1:${v2ray_port} {
         header_upstream Host {host}
