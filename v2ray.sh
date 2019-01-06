@@ -10,7 +10,7 @@ none='\e[0m'
 # Root
 [[ $(id -u) != 0 ]] && echo -e " 哎呀……请使用 ${red}root ${none}用户运行 ${yellow}~(^_^) ${none}" && exit 1
 
-_version="v3.15-test"
+_version="v3.16-test"
 
 cmd="apt-get"
 
@@ -24,21 +24,9 @@ else
 	echo -e " 哈哈……这个 ${red}辣鸡脚本${none} 不支持你的系统。 ${yellow}(-_-) ${none}" && exit 1
 fi
 
-# 笨笨的检测方法
-if [[ -f /usr/bin/apt-get ]] || [[ -f /usr/bin/yum && -f /bin/systemctl ]]; then
+if [[ -f /usr/bin/yum ]]; then
 
-	if [[ -f /usr/bin/yum ]]; then
-
-		cmd="yum"
-
-	fi
-	if [[ -f /bin/systemctl ]]; then
-		systemd=true
-	fi
-
-else
-
-	echo -e " 哈哈……这个 ${red}辣鸡脚本${none} 不支持你的系统。 ${yellow}(-_-) ${none}" && exit 1
+	cmd="yum"
 
 fi
 
@@ -76,6 +64,7 @@ caddy_pid=$(pgrep -f /usr/local/bin/caddy)
 _v2ray_sh="/usr/local/sbin/v2ray"
 v2ray_ver="$(/usr/bin/v2ray/v2ray -version | head -n 1 | cut -d " " -f2)"
 . /etc/v2ray/233boy/v2ray/src/init.sh
+systemd=true
 _test=true
 
 if [[ $v2ray_ver != v* ]]; then
