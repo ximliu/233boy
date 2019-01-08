@@ -52,7 +52,7 @@ v2ray_client_config="/etc/v2ray/233blog_v2ray_config.json"
 backup="/etc/v2ray/233blog_v2ray_backup.conf"
 _v2ray_sh="/usr/local/sbin/v2ray"
 systemd=true
-# _test=true
+_test=true
 
 transport=(
 	TCP
